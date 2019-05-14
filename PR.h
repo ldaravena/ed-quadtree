@@ -26,6 +26,6 @@ class PR: public PR_Tree{
 		
 	public:
 		
-		PR(int n,int m,std::vector<punto> puntos);
+		PR(int N,int M,std::vector<punto> puntos);
 		bool search(punto);
 };
