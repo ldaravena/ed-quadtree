@@ -21,11 +21,11 @@ struct punto{
 class PR: public PR_Tree{
 
 	private:
-		
-		nodo raiz;
-		
+
+		nodo *raiz;
+
 	public:
-		
+
 		PR(int N,int M,std::vector<punto> puntos);
 		bool search(punto);
 };
