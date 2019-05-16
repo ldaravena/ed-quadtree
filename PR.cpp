@@ -48,7 +48,7 @@ PR::PR(int xi, int yi, int N, int M, vector<pair<int,int>> puntos){
 					if(j < actual.second) break;
 
 					//Si la coordenada 'y' del punto es igual a la coordenada del rectángulo
-					if(j == actual.second){
+					else if(j == actual.second){
 
 						//Si el rectángulo actual no tiene puntos se crea un nuevo nodo
 						if(!ocupado){
