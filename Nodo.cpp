@@ -37,16 +37,17 @@ Nodo::Nodo(int xff, int yff){
 
 //Método para agregar puntos al nodo
 void Nodo::agregar(int px, int py){
-	
+
 	//Si el nodo ya tiene un 'punto'
 	if(ocupado){
-		
+
 		//Si no está dividido se divide
 		if(!dividido){
 
+			cout<<"Dividiendo...\n";
 			dividir();
 		}
-	
+
 		//Se verifica en que hijo debe ir el punto agregado
 		if(px >= nw->xi && px <= nw->xf && py >= nw->yi && py <= nw->yf){
 
@@ -72,7 +73,7 @@ void Nodo::agregar(int px, int py){
 			cout<<"ne: "<<px<<", "<<py<<endl;
 		}
 	}
-	
+
 	//Si el nodo no está ocupado se agrega el 'punto' y se marca como ocupado
 	else{
 
@@ -81,85 +82,89 @@ void Nodo::agregar(int px, int py){
 
 		ocupado = true;
 		cout<<"Agregado: "<<px<<", "<<py<<endl;
+
 	}
 }
 
-//Método para dividir el nodo en cuatro y heredar el punto actual al hijo correspondiente 
+//Método para dividir el nodo en cuatro y heredar el punto actual al hijo correspondiente
 void Nodo::dividir(){
-	
+
 	//Se calculan las dimensiones de los nuevos nodos
-	int fx = xf/2;
-	int fy = yf/2;
-	
+	int dx = (xf-xi)/2;
+	int dy = (yf-yi)/2;
+
 	//Se marca el nodo como dividido
 	dividido = true;
-	
+
 	//Se crea un nuevo nodo auxiliar y se copia la dirección al hijo 'nw'
-	Nodo *aux = new Nodo();
-	nw = aux;
-	
+	nw = new Nodo();
+
 	//Se agrega la dirección del padre
 	nw->padre = this;
-	
+
 	//Se agregan las dimensiones iniciales del nodo 'nw'
 	nw->xi = xi;
 	nw->yi = yi;
-	
+
 	//Se agregan las dimensiones finales
-	nw->xf = fx;
-	nw->yf = fy;
-	
+	nw->xf = xi+dx;
+	nw->yf = yi+dy;
+
 	//Se verifica si el 'punto' del padre debe heredarse al hijo 'nw'
 	if(x >= nw->xi && x <= nw->xf && y >= nw->yi && y <= nw->yf){
 
 		nw->x = x;
 		nw->y = y;
-		
+
 		cout<<"Heredado nw: "<<x<<", "<<y<<endl;
-		
+
 		//El padre queda con 'punto' nulo.
 		x=0;
 		y=0;
-		
+
 		//Se marca el nodo 'nw' como ocupado
 		nw->ocupado = true;
 	}
-	
-	//Se realizan las mismas verificaciones con los otros hijos
-	
-	Nodo *aux2 = new Nodo();
 
-	sw = aux2;
+	cout<<"Lim sup nw: "<<nw->xi<<", "<<nw->yi<<endl;
+	cout<<"Lim inf nw: "<<nw->xf<<", "<<nw->yf<<endl;
+
+	//Se realizan las mismas verificaciones con los otros hijos
+
+	sw = new Nodo();
 
 	sw->padre = this;
 
-	sw->xi = fx +1;
+	sw->xi = xi+dx+1;
 	sw->yi = yi;
 
 	sw->xf = xf;
-	sw->yf = fy;
+	sw->yf = yi+dy;
 
 	if(x >= sw->xi && x <= sw->xf && y >= sw->yi && y <= sw->yf){
 
 		sw->x = x;
 		sw->y = y;
-		
+
 		cout<<"Heredado sw: "<<x<<", "<<y<<endl;
-		
+
 		x=0;
 		y=0;
 		sw->ocupado = true;
-		
+
 	}
 
-	Nodo *aux3 = new Nodo();
 
-	se = aux3;
+	cout<<"Lim sup sw: "<<sw->xi<<", "<<sw->yi<<endl;
+	cout<<"Lim inf sw: "<<sw->xf<<", "<<sw->yf<<endl;
+
+
+	se = new Nodo();
 
 	se->padre = this;
 
-	se->xi = fx + 1;
-	se->yi = fy + 1;
+	se->xi = nw->xf+1;
+	se->yi = nw->yf+1;
 
 	se->xf = xf;
 	se->yf = yf;
@@ -169,7 +174,7 @@ void Nodo::dividir(){
 
 		se->x = x;
 		se->y = y;
-		
+
 		cout<<"Heredado se: "<<x<<", "<<y<<endl;
 
 		x=0;
@@ -177,16 +182,18 @@ void Nodo::dividir(){
 		se->ocupado = true;
 	}
 
-	Nodo *aux4 = new Nodo();
 
-	ne = aux4;
+	cout<<"Lim sup se: "<<se->xi<<", "<<se->yi<<endl;
+	cout<<"Lim inf se: "<<se->xf<<", "<<se->yf<<endl;
+
+	ne = new Nodo();
 
 	ne->padre = this;
 
 	ne->xi = xi;
-	ne->yi = fy +1;
+	ne->yi = yi+dy+1;
 
-	ne->xf = fx;
+	ne->xf = xi+dx;
 	ne->yf = yf;
 
 
@@ -194,11 +201,15 @@ void Nodo::dividir(){
 
 		ne->x = x;
 		ne->y = y;
-		
+
 		cout<<"Heredado ne: "<<x<<", "<<y<<endl;
 
 		x=0;
 		y=0;
 		ne->ocupado = true;
 	}
+
+
+	cout<<"Lim sup ne: "<<ne->xi<<", "<<ne->yi<<endl;
+	cout<<"Lim inf ne: "<<ne->xf<<", "<<ne->yf<<endl;
 }

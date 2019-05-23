@@ -17,8 +17,8 @@ int main(){
 	m[2][0] = 2;
 	m[2][1] = 12;
 
-	m[3][0] = 4;
-	m[3][1] = 14;
+	m[3][0] = 7;
+	m[3][1] = 18;
 
 	m[4][0] = 5;
 	m[4][1] = 16;
@@ -41,14 +41,14 @@ int main(){
 	m[0][0] = 17;
 	m[0][1] = 17;
 
-	
+
 	for(int i=0; i<10; i++){
 
-		cout<<m[i][0]<<", "<<m[i][1]<<endl;
+		//cout<<m[i][0]<<", "<<m[i][1]<<endl;
 
 		Qtree->agregar(m[i][0],m[i][1]);
-		cout<<Qtree->x<<", "<<Qtree->y<<endl;
-		cout<<&Qtree<<endl;
+		//cout<<Qtree->x<<", "<<Qtree->y<<endl;
+		//cout<<&Qtree<<endl;
 
 	}
 
