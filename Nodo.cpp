@@ -63,7 +63,7 @@ Nodo::Nodo(vector<pair<int,int>> *X, vector<pair<int,int>> *Y, bool b){
 
         vector<pair<int,int>>::iterator it=Y->begin()+v;
 
-        Yl.insert(Xl.end(),Y->begin(),it);
+        Yl.insert(Yl.end(),Y->begin(),it);
 
         Yr.insert(Yr.end(),it,Y->end());
 
