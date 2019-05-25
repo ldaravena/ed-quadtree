@@ -49,6 +49,7 @@ Nodo::Nodo(vector<pair<int,int>> *X, vector<pair<int,int>> *Y, bool b){
 
         left = new Nodo(&Xl,&Yl,false);
         left->padre = this;
+
         right = new Nodo(&Xr,&Yr,false);
         right->padre = this;
     }
@@ -84,10 +85,11 @@ Nodo::Nodo(vector<pair<int,int>> *X, vector<pair<int,int>> *Y, bool b){
             }
         }
 
-        linea = pary.first;
+        linea = pary.second;
 
         left = new Nodo(&Xl,&Yl,true);
         left->padre = this;
+
         right = new Nodo(&Xr,&Yr,true);
         right->padre = this;
     }
