@@ -1,5 +1,7 @@
 #include "KD_ADT.h"
 #include "Nodo.h"
+#include <vector>
+#include <utility>
 
 class KDTree : public KD_Tree{
 
