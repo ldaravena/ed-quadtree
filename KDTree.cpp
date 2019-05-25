@@ -1,4 +1,5 @@
 #include "KDTree.h"
+#include <vector>
 #include <utility>
 #include <algorithms>
 
