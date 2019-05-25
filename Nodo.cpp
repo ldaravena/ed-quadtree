@@ -244,27 +244,27 @@ void Nodo::find(std::pair<int,int> in, std::pair<int,int> fin){
 		std::pair<int,int> corner2(fin.first,in.second);
 		std::pair<int,int> corner4(in.first,fin.second);
 
-		if((in.first >= nw->xi && in.first <= nw->xf && in.second >= nw->yi && in.second 			<= nw->yf) || (corner2.first >= nw->xi && corner2.first <= nw->xf && 			corner2.second >= nw->yi && corner2.second <= nw->yf) || (fin.first >= nw->xi && 			fin.first <= nw->xf && fin.second >= nw->yi && fin.second <= nw->yf) || 		(corner4.first >= nw->xi && corner4.first <= nw->xf && corner4.second >= nw->yi 		&& corner4.second <= nw->yf)){
+		if((in.first >= nw->xi && in.first <= nw->xf && in.second >= nw->yi && in.second <= nw->yf) || (corner2.first >= nw->xi && corner2.first <= nw->xf && corner2.second >= nw->yi && corner2.second <= nw->yf) || (fin.first >= nw->xi && 	fin.first <= nw->xf && fin.second >= nw->yi && fin.second <= nw->yf) || (corner4.first >= nw->xi && corner4.first <= nw->xf && corner4.second >= nw->yi && corner4.second <= nw->yf)){
 
 			nw->find(in,fin);
 		}
 
-		else if((in.first >= sw->xi && in.first <= sw->xf && in.second >= sw->yi && 			in.second <= sw->yf) || (corner2.first >= sw->xi && corner2.first <= sw->xf && 			corner2.second >= sw->yi && corner2.second <= sw->yf) || (fin.first >= sw->xi && 			fin.first <= sw->xf && fin.second >= sw->yi && fin.second <= sw->yf) || 		(corner4.first >= sw->xi && corner4.first <= sw->xf && corner4.second >= sw->yi 		&& corner4.second <= sw->yf)){
+		else if((in.first >= sw->xi && in.first <= sw->xf && in.second >= sw->yi && in.second <= sw->yf) || (corner2.first >= sw->xi && corner2.first <= sw->xf && corner2.second >= sw->yi && corner2.second <= sw->yf) || (fin.first >= sw->xi && fin.first <= sw->xf && fin.second >= sw->yi && fin.second <= sw->yf) || (corner4.first >= sw->xi && corner4.first <= sw->xf && corner4.second >= sw->yi && corner4.second <= sw->yf)){
 
 			sw->find(in,fin);
 		}
 		
-		else if((in.first >= se->xi && in.first <= se->xf && in.second >= se->yi && 			in.second <= se->yf) || (corner2.first >= se->xi && corner2.first <= se->xf && 			corner2.second >= se->yi && corner2.second <= se->yf) || (fin.first >= se->xi && 			fin.first <= se->xf && fin.second >= se->yi && fin.second <= se->yf) || 		(corner4.first >= se->xi && corner4.first <= se->xf && corner4.second >= se->yi 		&& corner4.second <= se->yf)){
+		else if((in.first >= se->xi && in.first <= se->xf && in.second >= se->yi && in.second <= se->yf) || (corner2.first >= se->xi && corner2.first <= se->xf && corner2.second >= se->yi && corner2.second <= se->yf) || (fin.first >= se->xi && fin.first <= se->xf && fin.second >= se->yi && fin.second <= se->yf) || (corner4.first >= se->xi && corner4.first <= se->xf && corner4.second >= se->yi && corner4.second <= se->yf)){
 
 			se->find(in,fin);
 		}
 		
-		else if((in.first >= ne->xi && in.first <= ne->xf && in.second >= ne->yi && 			in.second <= ne->yf) || (corner2.first >= ne->xi && corner2.first <= ne->xf && 			corner2.second >= ne->yi && corner2.second <= ne->yf) || (fin.first >= ne->xi && 			fin.first <= ne->xf && fin.second >= ne->yi && fin.second <= ne->yf) || 		(corner4.first >= ne->xi && corner4.first <= ne->xf && corner4.second >= ne->yi 		&& corner4.second <= ne->yf)){
+		else if((in.first >= ne->xi && in.first <= ne->xf && in.second >= ne->yi && in.second <= ne->yf) || (corner2.first >= ne->xi && corner2.first <= ne->xf && corner2.second >= ne->yi && corner2.second <= ne->yf) || (fin.first >= ne->xi && fin.first <= ne->xf && fin.second >= ne->yi && fin.second <= ne->yf) || (corner4.first >= ne->xi && corner4.first <= ne->xf && corner4.second >= ne->yi && corner4.second <= ne->yf)){
 
 			ne->find(in,fin);
 		}
 
-		padre->found.insert(padre->found.end(),found.begin(),found.end());
+		if(padre!=NULL) padre->found.insert(padre->found.end(),found.begin(),found.end());
 		
 	}
 
